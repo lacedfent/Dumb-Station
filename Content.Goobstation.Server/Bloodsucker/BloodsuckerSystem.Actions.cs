@@ -45,8 +45,24 @@ public sealed partial class BloodsuckerSystem
         if (!TryUseBlood(ent, ent.Comp.BatFormCost))
             return;
 
-        // TODO: Implement bat transformation
-        _popup.PopupEntity("You transform into a bat! (Not implemented yet)", ent, ent);
+        // Toggle bat form
+        if (!ent.Comp.InBatForm)
+        {
+            if (_polymorph.PolymorphEntity(ent, "BloodsuckerBatForm") != null)
+            {
+                ent.Comp.InBatForm = true;
+                _popup.PopupEntity("You transform into a bat!", ent, ent);
+            }
+        }
+        else
+        {
+            if (_polymorph.Revert((ent, null)))
+            {
+                ent.Comp.InBatForm = false;
+                _popup.PopupEntity("You return to your normal form.", ent, ent);
+            }
+        }
+
         args.Handled = true;
     }
 
@@ -58,8 +74,13 @@ public sealed partial class BloodsuckerSystem
         if (!TryUseBlood(ent, ent.Comp.MistFormCost))
             return;
 
-        // TODO: Implement mist transformation
-        _popup.PopupEntity("You transform into mist! (Not implemented yet)", ent, ent);
+        // Mist form is temporary (10 seconds)
+        if (_polymorph.PolymorphEntity(ent, "BloodsuckerMistForm") != null)
+        {
+            ent.Comp.InMistForm = true;
+            _popup.PopupEntity("You transform into mist!", ent, ent);
+        }
+
         args.Handled = true;
     }
 

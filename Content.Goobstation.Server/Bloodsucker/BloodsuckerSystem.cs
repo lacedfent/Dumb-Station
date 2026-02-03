@@ -2,9 +2,11 @@
 using Content.Goobstation.Shared.Bloodsucker;
 using Content.Goobstation.Shared.Bloodsucker.Components;
 using Content.Server.Actions;
+using Content.Server.Antag;
 using Content.Server.Body.Systems;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
+using Content.Server.Polymorph.Systems;
 using Content.Server.Stunnable;
 using Content.Shared.Actions;
 using Content.Shared.Alert;
@@ -12,12 +14,17 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
+using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Polymorph;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Numerics;
@@ -39,8 +46,14 @@ public sealed partial class BloodsuckerSystem : SharedBloodsuckerSystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
+    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly PolymorphableSystem _polymorph = default!;
 
     private const string BloodReagent = "Blood";
+    
+    private readonly SoundSpecifier _greetingSound = new SoundPathSpecifier("/Audio/_Goobstation/Bloodsucker/bloodsucker_greeting.ogg");
 
     public override void Initialize()
     {
@@ -49,8 +62,28 @@ public sealed partial class BloodsuckerSystem : SharedBloodsuckerSystem
         SubscribeLocalEvent<BloodsuckerComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<BloodsuckerComponent, BloodDrainDoAfterEvent>(OnBloodDrain);
         SubscribeLocalEvent<BloodsuckerComponent, ThrallConvertDoAfterEvent>(OnThrallConvert);
+        SubscribeLocalEvent<BloodsuckerComponent, EntGotInsertedIntoContainerMessage>(OnEnteredContainer);
+        SubscribeLocalEvent<BloodsuckerComponent, EntGotRemovedFromContainerMessage>(OnExitedContainer);
         
         SubscribeActions();
+    }
+
+    private void OnEnteredContainer(Entity<BloodsuckerComponent> ent, ref EntGotInsertedIntoContainerMessage args)
+    {
+        // Check if entered a coffin (EntityStorage)
+        if (HasComp<EntityStorageComponent>(args.Container.Owner))
+        {
+            ent.Comp.Coffin = args.Container.Owner;
+            _popup.PopupEntity("You rest in the coffin, feeling your power slowly return...", ent, ent);
+        }
+    }
+
+    private void OnExitedContainer(Entity<BloodsuckerComponent> ent, ref EntGotRemovedFromContainerMessage args)
+    {
+        if (ent.Comp.Coffin == args.Container.Owner)
+        {
+            ent.Comp.Coffin = null;
+        }
     }
 
     private void OnStartup(Entity<BloodsuckerComponent> ent, ref ComponentStartup args)
@@ -64,6 +97,13 @@ public sealed partial class BloodsuckerSystem : SharedBloodsuckerSystem
         _actions.AddAction(ent, "ActionBloodsuckerThrall");
 
         UpdateBloodAlert(ent);
+
+        // Send greeting message
+        if (_mind.TryGetMind(ent, out var mindId, out _))
+        {
+            var briefing = Loc.GetString("bloodsucker-role-greeting");
+            _antag.SendBriefing(ent, briefing, Color.DarkRed, _greetingSound);
+        }
     }
 
     public override void Update(float frameTime)
@@ -73,6 +113,14 @@ public sealed partial class BloodsuckerSystem : SharedBloodsuckerSystem
         var query = EntityQueryEnumerator<BloodsuckerComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
+            // Coffin regeneration
+            if (comp.Coffin != null && EntityManager.EntityExists(comp.Coffin.Value))
+            {
+                comp.BloodPoints += 10f * frameTime; // Regen 10 blood/sec in coffin
+                if (comp.BloodPoints > comp.MaxBloodPoints)
+                    comp.BloodPoints = comp.MaxBloodPoints;
+            }
+
             // Sunlight damage
             if (IsInSunlight(uid))
             {
@@ -91,8 +139,8 @@ public sealed partial class BloodsuckerSystem : SharedBloodsuckerSystem
                 }
             }
 
-            // Passive blood consumption
-            if (comp.BloodPoints > 0)
+            // Passive blood consumption (only if not in coffin)
+            if (comp.Coffin == null && comp.BloodPoints > 0)
             {
                 comp.BloodPoints -= 0.5f * frameTime;
                 if (comp.BloodPoints < 0)

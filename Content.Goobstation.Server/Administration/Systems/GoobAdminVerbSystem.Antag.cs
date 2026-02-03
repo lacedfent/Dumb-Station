@@ -10,6 +10,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Content.Goobstation.Common.Blob;
+using Content.Goobstation.Server.Bloodsucker.GameTicking.Rules;
 using Content.Goobstation.Server.Changeling.GameTicking.Rules;
 using Content.Goobstation.Server.Devil.GameTicking.Rules;
 using Content.Goobstation.Server.Shadowling.Rules;
@@ -99,6 +100,23 @@ public sealed partial class GoobAdminVerbSystem
             Message = Loc.GetString("admin-verb-make-shadowling"),
         };
         args.Verbs.Add(shadowling);
+
+        // Bloodsucker
+        Verb bloodsucker = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-bloodsucker"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(
+                new("/Textures/Interface/Actions/bloodsucker.rsi"),
+                "drain"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<BloodsuckerRuleComponent>(targetPlayer, "Bloodsucker");
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-bloodsucker"),
+        };
+        args.Verbs.Add(bloodsucker);
     }
 
     public bool AntagVerbAllowed(GetVerbsEvent<Verb> args, [NotNullWhen(true)] out ICommonSession? target)

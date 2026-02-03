@@ -1,0 +1,27 @@
+# Bloodsucker Polymorphs
+
+- type: polymorph
+  id: BloodsuckerBatForm
+  configuration:
+    entity: BloodsuckerBatEntity
+    transferDamage: true
+    forced: true
+    inventory: Transfer # Keep equipment!
+    transferName: true
+    revertOnDeath: false
+    revertOnCrit: true # Revert when stamina crit
+    allowRepeatedMorphs: true
+
+- type: polymorph
+  id: BloodsuckerMistForm
+  configuration:
+    entity: EtherealJaunt # Use wizard jaunt entity
+    transferDamage: false
+    forced: true
+    inventory: Transfer # Don't drop inventory!
+    transferName: true
+    revertOnDeath: false
+    revertOnCrit: false
+    duration: 10
+    allowRepeatedMorphs: true
+    attachToGridOrMap: true
