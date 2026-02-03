@@ -1,0 +1,24 @@
+# Bloodsucker Entities
+
+- type: entity
+  id: BloodsuckerCoffin
+  name: ornate coffin
+  description: A dark, ornate coffin. It emanates an aura of dread.
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/closet.rsi
+    state: coffin
+  - type: BloodsuckerCoffin
+  - type: Storage
+    capacity: 1000
+  - type: EntityStorage
+  - type: Anchorable
+  - type: Damageable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

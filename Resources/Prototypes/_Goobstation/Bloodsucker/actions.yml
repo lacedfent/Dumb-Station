@@ -1,0 +1,73 @@
+# Bloodsucker Actions
+
+- type: entity
+  id: ActionBloodsuckerGlare
+  name: Vampiric Glare
+  description: Paralyze a victim with your hypnotic gaze. Costs 50 blood.
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: Interface/Actions/bloodsucker.rsi
+      state: glare
+    event: !type:BloodsuckerGlareActionEvent
+    range: 5
+    canTargetSelf: false
+
+- type: entity
+  id: ActionBloodsuckerCloak
+  name: Cloak of Darkness
+  description: Fade into shadows, becoming harder to see. Costs 30 blood.
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Interface/Actions/bloodsucker.rsi
+      state: cloak
+    event: !type:BloodsuckerCloakActionEvent
+
+- type: entity
+  id: ActionBloodsuckerBatForm
+  name: Bat Form
+  description: Transform into a bat for increased mobility. Costs 100 blood.
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Interface/Actions/bloodsucker.rsi
+      state: bat
+    event: !type:BloodsuckerBatFormActionEvent
+
+- type: entity
+  id: ActionBloodsuckerMistForm
+  name: Mist Form
+  description: Transform into mist, becoming incorporeal. Costs 150 blood.
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Interface/Actions/bloodsucker.rsi
+      state: mist
+    event: !type:BloodsuckerMistFormActionEvent
+
+- type: entity
+  id: ActionBloodsuckerDrain
+  name: Drain Blood
+  description: Drain blood from a victim to replenish your power.
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: Interface/Actions/bloodsucker.rsi
+      state: drain
+    event: !type:BloodsuckerDrainActionEvent
+    range: 1.5
+    canTargetSelf: false
+
+- type: entity
+  id: ActionBloodsuckerThrall
+  name: Enthrall
+  description: Convert a victim into your loyal thrall. Costs 200 blood.
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: Interface/Actions/bloodsucker.rsi
+      state: thrall
+    event: !type:BloodsuckerThrallActionEvent
+    range: 1.5
+    canTargetSelf: false
