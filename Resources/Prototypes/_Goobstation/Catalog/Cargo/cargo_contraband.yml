@@ -1,0 +1,13 @@
+# Contraband items only available when cargo console is emagged
+
+- type: cargoProduct
+  id: CrateContrabandDonkpocketVariety
+  name: cargo-crate-contraband-donkpocket-name
+  description: cargo-crate-contraband-donkpocket-desc
+  icon:
+    sprite: Objects/Storage/Happyhonk/nukie.rsi
+    state: box
+  product: CrateContrabandDonkpocketVariety
+  cost: 6500
+  category: cargoproduct-category-name-contraband
+  group: contraband

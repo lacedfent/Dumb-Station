@@ -2,6 +2,9 @@
   id: market
 
 - type: cargoMarket
+  id: contraband
+
+- type: cargoMarket
   id: SalvageJobReward2
 
 - type: cargoMarket

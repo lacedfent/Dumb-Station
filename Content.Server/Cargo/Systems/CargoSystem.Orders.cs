@@ -222,6 +222,13 @@ namespace Content.Server.Cargo.Systems
             if (_emag.CheckFlag(ent, EmagType.Interaction))
                 return;
 
+            // Unlock contraband market
+            if (!ent.Comp.AllowedGroups.Contains("contraband"))
+            {
+                ent.Comp.AllowedGroups.Add("contraband");
+                Dirty(ent);
+            }
+
             args.Handled = true;
         }
 

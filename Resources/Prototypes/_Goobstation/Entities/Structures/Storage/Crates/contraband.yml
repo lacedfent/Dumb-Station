@@ -1,0 +1,12 @@
+# Contraband crates for emagged cargo
+
+- type: entity
+  parent: CrateFreezer
+  id: CrateContrabandDonkpocketVariety
+  name: nuclear operative meal crate
+  description: A freezer crate containing 10 Robust Nukie Meals. Totally not stolen from a syndicate outpost.
+  components:
+  - type: StorageFill
+    contents:
+    - id: HappyHonkNukie
+      amount: 10
