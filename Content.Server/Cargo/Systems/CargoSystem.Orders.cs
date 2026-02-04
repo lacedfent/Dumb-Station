@@ -222,11 +222,22 @@ namespace Content.Server.Cargo.Systems
             if (_emag.CheckFlag(ent, EmagType.Interaction))
                 return;
 
-            // Unlock contraband market
+            // Unlock contraband market on both console and station
             if (!ent.Comp.AllowedGroups.Contains("contraband"))
             {
                 ent.Comp.AllowedGroups.Add("contraband");
                 Dirty(ent);
+            }
+
+            // Also add to station's market list
+            if (_station.GetOwningStation(ent) is { } station &&
+                TryComp<StationCargoOrderDatabaseComponent>(station, out var db))
+            {
+                if (!db.Markets.Contains("contraband"))
+                {
+                    db.Markets.Add("contraband");
+                    Dirty(station, db);
+                }
             }
 
             args.Handled = true;
