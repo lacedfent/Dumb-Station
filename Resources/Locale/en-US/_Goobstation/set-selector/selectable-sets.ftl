@@ -147,6 +147,12 @@ selectable-set-syndicate-organharvester-description =
     Contains: Syndicate surgical duffel with advanced tools, 2 boxes of body bags, advanced medkit,
     2 handcuffs, 2 zipties, pax syringe, chloral hydrate syringe, gas mask, storage implanter, and a syndicate encryption key.
 
+selectable-set-syndicate-pyromaniac-name = Pyromaniac Bundle
+selectable-set-syndicate-pyromaniac-description =
+    I don't want to set the world on fire... I just want to start a flame in their heart.
+    Contains: 4 incendiary grenades, incendiary shotgun shells, flaming fire axe, firesuit, fire helmet,
+    experimental welder, 2 molotovs, and a syndicate encryption key.
+
 # Blueshield
 
 selectable-set-blueshield-shield-name = blueshield set

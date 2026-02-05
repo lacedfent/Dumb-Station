@@ -425,6 +425,27 @@
   - ClothingMaskGasSyndicate
   - StorageImplanter
 
+- type: selectableSet
+  id: SyndicatePyromaniacSet
+  name: selectable-set-syndicate-pyromaniac-name
+  description: selectable-set-syndicate-pyromaniac-description
+  sprite:
+    sprite: Objects/Weapons/Throwable/grenade.rsi
+    state: incendiary
+  content:
+  - EncryptionKeySyndie
+  - GrenadeIncendiary
+  - GrenadeIncendiary
+  - GrenadeIncendiary
+  - GrenadeIncendiary
+  - BoxShotgunIncendiary
+  - FireAxeFlaming
+  - ClothingOuterSuitFire
+  - ClothingHeadHelmetFire
+  - WelderExperimental
+  - Molotov
+  - Molotov
+
 # Blueshield officer
 
 - type: selectableSet
