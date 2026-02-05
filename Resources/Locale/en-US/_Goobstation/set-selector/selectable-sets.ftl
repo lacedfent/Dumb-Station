@@ -156,8 +156,8 @@ selectable-set-syndicate-pyromaniac-description =
 selectable-set-syndicate-madscientist-name = Mad Scientist Bundle
 selectable-set-syndicate-madscientist-description =
     Science isn't about WHY, it's about WHY NOT! Time to conduct some unethical experiments.
-    Contains: Dart gun, hypopen box, 2 unstable mutagen bottles, toxin bottle, mindbreaker toxin, heartbreaker toxin,
-    nocturine bottle, 2 chloral hydrate syringes, lab coat, chemical goggles, latex gloves, 2 pyroclastic anomaly cores, and a syndicate encryption key.
+    Contains: Dart gun, hypopen box, chemical synthesis kit, 2 unstable mutagen bottles, toxin bottle, mindbreaker toxin, heartbreaker toxin,
+    nocturine bottle, 2 chloral hydrate syringes, lab coat, latex gloves, 2 pyroclastic anomaly cores, and a syndicate encryption key.
 
 selectable-set-syndicate-clownops-name = Clown Ops Bundle
 selectable-set-syndicate-clownops-description =
