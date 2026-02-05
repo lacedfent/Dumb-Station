@@ -150,8 +150,8 @@ selectable-set-syndicate-organharvester-description =
 selectable-set-syndicate-pyromaniac-name = Pyromaniac Bundle
 selectable-set-syndicate-pyromaniac-description =
     I don't want to set the world on fire... I just want to start a flame in their heart.
-    Contains: 4 incendiary grenades, incendiary shotgun shells, flaming fire axe, firesuit, fire helmet,
-    experimental welder, 2 molotovs, and a syndicate encryption key.
+    Contains: Bulldog shotgun, 2 incendiary drum mags, incendiary shell box, 6 incendiary grenades,
+    flaming fire axe, firesuit, fire helmet, experimental welder, fuel tank, 3 molotovs, and a syndicate encryption key.
 
 # Blueshield
 

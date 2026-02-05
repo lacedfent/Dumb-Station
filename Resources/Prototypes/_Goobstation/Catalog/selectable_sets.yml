@@ -434,15 +434,22 @@
     state: incendiary
   content:
   - EncryptionKeySyndie
-  - GrenadeIncendiary
-  - GrenadeIncendiary
-  - GrenadeIncendiary
-  - GrenadeIncendiary
+  - WeaponShotgunBulldog
+  - MagazineShotgunIncendiary
+  - MagazineShotgunIncendiary
   - BoxShotgunIncendiary
+  - GrenadeIncendiary
+  - GrenadeIncendiary
+  - GrenadeIncendiary
+  - GrenadeIncendiary
+  - GrenadeIncendiary
+  - GrenadeIncendiary
   - FireAxeFlaming
   - ClothingOuterSuitFire
   - ClothingHeadHelmetFire
   - WelderExperimental
+  - WeldingFuelTankFull
+  - Molotov
   - Molotov
   - Molotov
 
