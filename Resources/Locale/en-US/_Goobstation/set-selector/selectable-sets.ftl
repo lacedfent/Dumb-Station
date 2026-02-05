@@ -145,7 +145,7 @@ selectable-set-syndicate-organharvester-name = Organ Harvester Bundle
 selectable-set-syndicate-organharvester-description =
     The black market pays well for fresh organs. Time to make a collection.
     Contains: Syndicate surgical duffel with advanced tools, 2 boxes of body bags, advanced medkit,
-    2 handcuffs, 2 zipties, 2 pax syringes, gas mask, storage implanter, and a syndicate encryption key.
+    2 handcuffs, 2 zipties, pax syringe, chloral hydrate syringe, gas mask, storage implanter, and a syndicate encryption key.
 
 # Blueshield
 
