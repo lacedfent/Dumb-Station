@@ -362,6 +362,47 @@
   - SheetPlasteel # 60
   - PowerCellSmall
 
+- type: selectableSet
+  id: SyndicateBankRobberSet
+  name: selectable-set-syndicate-bankrobber-name
+  description: selectable-set-syndicate-bankrobber-description
+  sprite:
+    sprite: Objects/Misc/monkeycube.rsi
+    state: icon
+  content:
+  - EncryptionKeySyndie
+  - ClothingMaskGasSyndicate
+  - ClothingHeadHelmetSwatSyndicate
+  - ClothingOuterArmorBasic
+  - ClothingHandsGlovesCombat
+  - WeaponShotgunBulldog
+  - MagazineShotgun
+  - MagazineShotgun
+  - MagazineShotgun
+  - C4
+  - C4
+  - Emag
+  - SpaceCash5000
+  - SpaceCash5000
+  - Handcuffs
+  - Handcuffs
+
+- type: selectableSet
+  id: SyndicateBestBuddiesSet
+  name: selectable-set-syndicate-bestbuddies-name
+  description: selectable-set-syndicate-bestbuddies-description
+  sprite:
+    sprite: Objects/Fun/Plushies/carp.rsi
+    state: icon
+  content:
+  - EncryptionKeySyndie
+  - BoxHoloparasite
+  - ClothingHandsGlovesNorthStar
+  - ReinforcementRadioSyndicateSyndiCat
+  - ReinforcementRadioSyndicateSyndiRoach
+  - ReinforcementRadioSyndicateAncestor
+  - SoapOmega
+
 # Blueshield officer
 
 - type: selectableSet

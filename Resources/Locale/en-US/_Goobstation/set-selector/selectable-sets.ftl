@@ -129,6 +129,18 @@ selectable-set-syndicate-builder-description =
     Contains: 2 disposable ballistic turrets, a telecrystal miner flatpack,
     some tools and materials to get you started, and a syndicate encryption key.
 
+selectable-set-syndicate-bankrobber-name = Bank Robber Bundle
+selectable-set-syndicate-bankrobber-description =
+    Time to make a withdrawal. The hard way.
+    Contains: Bulldog shotgun with 3 magazines, gas mask, SWAT helmet, armor vest, combat gloves,
+    2x C4, emag, 10,000 spesos, 2 pairs of handcuffs, and a syndicate encryption key.
+
+selectable-set-syndicate-bestbuddies-name = Best Buddies Bundle
+selectable-set-syndicate-bestbuddies-description =
+    You'll never fight alone with this crew.
+    Contains: Holoparasite injector box, gloves of the north star, syndicat radio, syndiroach radio,
+    genetic ancestor radio, omega soap, and a syndicate encryption key.
+
 # Blueshield
 
 selectable-set-blueshield-shield-name = blueshield set
