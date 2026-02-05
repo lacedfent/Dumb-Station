@@ -139,6 +139,7 @@
     - SyndicateOrganHarvesterSet
     - SyndicatePyromaniacSet
     - SyndicateMadScientistSet
+    - SyndicateClownOpsSet
     setsToSelect: 3
     spawnedStoragePrototype: CrateSyndicate
     spawnedStorageContainer: entity_storage

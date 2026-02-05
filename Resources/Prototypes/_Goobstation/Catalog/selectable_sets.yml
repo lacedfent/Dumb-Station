@@ -478,6 +478,29 @@
   - AnomalyCorePyroclastic
   - AnomalyCorePyroclastic
 
+- type: selectableSet
+  id: SyndicateClownOpsSet
+  name: selectable-set-syndicate-clownops-name
+  description: selectable-set-syndicate-clownops-description
+  sprite:
+    sprite: Clothing/Mask/clown.rsi
+    state: icon
+  content:
+  - EncryptionKeySyndie
+  - LauncherCreamPieRegenerating
+  - ClothingMaskClown
+  - ClothingShoesBling
+  - SoapOmega
+  - BikeHorn
+  - LubeGrenade
+  - LubeGrenade
+  - LubeGrenade
+  - ClusterBananaPeel
+  - TrashBananaPeelExplosive
+  - TrashBananaPeelExplosive
+  - VehicleClowncarAntag
+  - BikeHornImplanter
+
 # Blueshield officer
 
 - type: selectableSet

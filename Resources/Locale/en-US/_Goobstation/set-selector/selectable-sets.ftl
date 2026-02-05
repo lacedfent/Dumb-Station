@@ -159,6 +159,12 @@ selectable-set-syndicate-madscientist-description =
     Contains: Dart gun, hypopen box, 2 unstable mutagen bottles, toxin bottle, mindbreaker toxin, heartbreaker toxin,
     nocturine bottle, 2 chloral hydrate syringes, lab coat, chemical goggles, latex gloves, 2 pyroclastic anomaly cores, and a syndicate encryption key.
 
+selectable-set-syndicate-clownops-name = Clown Ops Bundle
+selectable-set-syndicate-clownops-description =
+    Honk.
+    Contains: Regenerating pie cannon, clown mask, bling clown shoes, omega soap, bike horn, 3 lube grenades,
+    cluster banana peel, 2 explosive banana peels, clown car, bike horn implanter, and a syndicate encryption key.
+
 # Blueshield
 
 selectable-set-blueshield-shield-name = blueshield set
