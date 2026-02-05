@@ -403,6 +403,28 @@
   - ReinforcementRadioSyndicateAncestor
   - SoapOmega
 
+- type: selectableSet
+  id: SyndicateOrganHarvesterSet
+  name: selectable-set-syndicate-organharvester-name
+  description: selectable-set-syndicate-organharvester-description
+  sprite:
+    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: advanced
+  content:
+  - EncryptionKeySyndie
+  - ClothingBackpackDuffelSyndicateFilledMedical
+  - BoxBodyBag
+  - BoxBodyBag
+  - MedkitAdvancedFilled
+  - Handcuffs
+  - Handcuffs
+  - Zipties
+  - Zipties
+  - SyringePax
+  - SyringePax
+  - ClothingMaskGasSyndicate
+  - StorageImplanter
+
 # Blueshield officer
 
 - type: selectableSet

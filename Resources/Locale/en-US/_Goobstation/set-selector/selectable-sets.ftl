@@ -141,6 +141,12 @@ selectable-set-syndicate-bestbuddies-description =
     Contains: Holoparasite injector box, gloves of the north star, syndicat radio, syndiroach radio,
     genetic ancestor radio, omega soap, and a syndicate encryption key.
 
+selectable-set-syndicate-organharvester-name = Organ Harvester Bundle
+selectable-set-syndicate-organharvester-description =
+    The black market pays well for fresh organs. Time to make a collection.
+    Contains: Syndicate surgical duffel with advanced tools, 2 boxes of body bags, advanced medkit,
+    2 handcuffs, 2 zipties, 2 pax syringes, gas mask, storage implanter, and a syndicate encryption key.
+
 # Blueshield
 
 selectable-set-blueshield-shield-name = blueshield set

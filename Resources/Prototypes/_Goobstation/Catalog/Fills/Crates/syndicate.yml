@@ -136,6 +136,7 @@
     - SyndicateBuilderSet
     - SyndicateBankRobberSet
     - SyndicateBestBuddiesSet
+    - SyndicateOrganHarvesterSet
     setsToSelect: 3
     spawnedStoragePrototype: CrateSyndicate
     spawnedStorageContainer: entity_storage
