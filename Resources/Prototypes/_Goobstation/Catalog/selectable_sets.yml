@@ -453,6 +453,31 @@
   - Molotov
   - Molotov
 
+- type: selectableSet
+  id: SyndicateMadScientistSet
+  name: selectable-set-syndicate-madscientist-name
+  description: selectable-set-syndicate-madscientist-description
+  sprite:
+    sprite: Objects/Specific/Chemistry/beaker_large.rsi
+    state: beakerlarge
+  content:
+  - EncryptionKeySyndie
+  - DartGun
+  - HypopenBox
+  - ChemistryBottleUnstableMutagen
+  - ChemistryBottleUnstableMutagen
+  - ChemistryBottleToxin
+  - ChemistryBottleMindbreakerToxin
+  - ChemistryBottleHeartbreakerToxin
+  - ChemistryBottleNocturine
+  - SyringeChloralHydrate
+  - SyringeChloralHydrate
+  - ClothingOuterCoatLab
+  - ClothingEyesGlassesChemical
+  - ClothingHandsGlovesLatex
+  - AnomalyCorePyroclastic
+  - AnomalyCorePyroclastic
+
 # Blueshield officer
 
 - type: selectableSet

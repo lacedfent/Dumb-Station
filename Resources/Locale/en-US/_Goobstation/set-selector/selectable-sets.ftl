@@ -153,6 +153,12 @@ selectable-set-syndicate-pyromaniac-description =
     Contains: Bulldog shotgun, 2 incendiary drum mags, incendiary shell box, 6 incendiary grenades,
     flaming fire axe, firesuit, fire helmet, experimental welder, fuel tank, 3 molotovs, and a syndicate encryption key.
 
+selectable-set-syndicate-madscientist-name = Mad Scientist Bundle
+selectable-set-syndicate-madscientist-description =
+    Science isn't about WHY, it's about WHY NOT! Time to conduct some unethical experiments.
+    Contains: Dart gun, hypopen box, 2 unstable mutagen bottles, toxin bottle, mindbreaker toxin, heartbreaker toxin,
+    nocturine bottle, 2 chloral hydrate syringes, lab coat, chemical goggles, latex gloves, 2 pyroclastic anomaly cores, and a syndicate encryption key.
+
 # Blueshield
 
 selectable-set-blueshield-shield-name = blueshield set
