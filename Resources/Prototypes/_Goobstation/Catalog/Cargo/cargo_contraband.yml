@@ -2,7 +2,6 @@
 
 - type: cargoProduct
   id: CrateContrabandDonkpocketVariety
-  name: cargo-crate-contraband-donkpocket-name
   description: cargo-crate-contraband-donkpocket-desc
   icon:
     sprite: Objects/Storage/Happyhonk/nukie.rsi
