@@ -210,6 +210,5 @@
     icon:
       sprite: /Textures/_Goobstation/Vampire/Dantalion.rsi
       state: thralls_up
-  - type: FreeObjective
   - type: TargetObjective
     title: objective-vampire-thrall-obey-master-title
