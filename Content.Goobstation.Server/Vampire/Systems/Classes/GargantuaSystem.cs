@@ -308,11 +308,14 @@ public sealed class GargantuaSystem : EntitySystem
         if (effect.EndEffectTime is not { } end)
             return;
 
-        // Only affect the same set of status effects as before.
-        if (!HasComp<StunnedStatusEffectComponent>(effectUid)
-            && !HasComp<KnockdownStatusEffectComponent>(effectUid)
-            && !HasComp<MovementModStatusEffectComponent>(effectUid)
-            && !HasComp<ForcedSleepingStatusEffectComponent>(effectUid))
+        // Get the prototype ID of the status effect entity
+        if (!TryComp<MetaDataComponent>(effectUid, out var meta) || meta.EntityPrototype == null)
+            return;
+
+        var effectKey = meta.EntityPrototype.ID;
+
+        // Only affect stun-related status effects
+        if (effectKey != "Stun" && effectKey != "KnockedDown" && effectKey != "ForcedSleeping")
             return;
 
         var now = _timing.CurTime;
@@ -321,10 +324,7 @@ public sealed class GargantuaSystem : EntitySystem
         if (remaining <= TimeSpan.Zero)
             return;
 
-        if (MetaData(effectUid).EntityPrototype is not { ID: var protoId })
-            return;
-
-        _statusEffects.TrySetStatusEffectDuration(args.Target, protoId, remaining / 2);
+        _statusEffects.TrySetStatusEffectDuration(args.Target, effectKey, remaining / 2);
     }
 
     #endregion
@@ -368,7 +368,7 @@ public sealed class GargantuaSystem : EntitySystem
             direction = direction.Normalized();
 
             // Knockdown the target
-            _stun.TryKnockdown(target, TimeSpan.FromSeconds(2), true);
+            _stun.TryParalyze(target, TimeSpan.FromSeconds(2), true);
 
             // Throw them away from the vampire
             _throwing.TryThrow(target, direction * args.ThrowDistance, 5f, uid);
@@ -526,11 +526,11 @@ public sealed class GargantuaSystem : EntitySystem
                     if (shouldPull)
                     {
                         // apply paralyze in combat mode, otherwise immobilize
-                        _stun.TryAddParalyzeDuration(target, immobilizeDuration);
+                        _stun.TryParalyze(target, immobilizeDuration, true);
                     }
                     else
                     {
-                        _stun.TryAddStunDuration(target, immobilizeDuration);
+                        _stun.TryStun(target, immobilizeDuration, true);
 
                         if (!HasComp<KnockedDownComponent>(target))
                         {
@@ -723,7 +723,7 @@ public sealed class GargantuaSystem : EntitySystem
         // Throw the target
         _throwing.TryThrow(target, gargantua.ChargeDirectionVector * chargeEv.CreatureThrowDistance, 6f, uid);
 
-        _stun.TryKnockdown(target, TimeSpan.FromSeconds(2), true);
+        _stun.TryParalyze(target, TimeSpan.FromSeconds(2), true);
 
         _popup.PopupEntity(Loc.GetString("vampire-charge-impact", ("target", target)), uid, uid);
     }

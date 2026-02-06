@@ -21,6 +21,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Maps;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
@@ -593,7 +594,7 @@ public sealed class HemomancerSystem : EntitySystem
             return;
 
         if (TryComp<MobStateComponent>(uid, out var mobState) &&
-            mobState.CurrentState == Shared.Mobs.MobState.Dead)
+            mobState.CurrentState == MobState.Dead)
         {
             DeactivateBloodBringersRite(uid, hemomancer);
             return;
@@ -626,7 +627,7 @@ public sealed class HemomancerSystem : EntitySystem
             if (_container.IsEntityOrParentInContainer(entity))
                 continue;
 
-            if (TryComp<MobStateComponent>(entity, out var state) && state.CurrentState == Shared.Mobs.MobState.Dead)
+            if (TryComp<MobStateComponent>(entity, out var state) && state.CurrentState == MobState.Dead)
                 continue;
 
             if (!HasComp<HumanoidAppearanceComponent>(entity) || !HasComp<BloodstreamComponent>(entity))
@@ -852,9 +853,6 @@ public sealed class HemomancerSystem : EntitySystem
         var warps = AllEntityQuery<WarpPointComponent, TransformComponent>();
         while (warps.MoveNext(out var warpUid, out var warp, out var warpXform))
         {
-            if (_whitelist.IsWhitelistPass(warp.Blacklist, warpUid))
-                continue;
-
             if (string.IsNullOrWhiteSpace(warp.Location))
                 continue;
 

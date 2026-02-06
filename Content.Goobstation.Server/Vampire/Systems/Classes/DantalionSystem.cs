@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Goobstation.Server.Vampire.Components;
 using Content.Shared.Bible.Components;
+using Content.Goobstation.Common.Religion;
 using Content.Goobstation.Shared.Vampire;
 using Content.Goobstation.Shared.Vampire.Components;
 using Content.Goobstation.Shared.Vampire.Components.Classes;
@@ -287,7 +288,7 @@ public sealed class DantalionSystem : EntitySystem
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return false;
 
-        if (!TryComp<MobStateComponent>(target, out var mobState) || mobState.CurrentState == Shared.Mobs.MobState.Dead)
+        if (!TryComp<MobStateComponent>(target, out var mobState) || mobState.CurrentState == MobState.Dead)
             return false;
 
         if (HasComp<VampireComponent>(target) || HasComp<VampireThrallComponent>(target))
@@ -558,12 +559,8 @@ public sealed class DantalionSystem : EntitySystem
                 continue;
             
             // Remove stuns
-            if (HasComp<StunnedComponent>(thrall))
-                RemComp<StunnedComponent>(thrall);
-
-            _statusEffects.TryRemoveStatusEffect(thrall, SharedStunSystem.StunId);
-            _stun.TryUnstun(thrall);
-            RemComp<KnockedDownComponent>(thrall);
+            _statusEffects.TryRemoveStatusEffect(thrall, "Stun");
+            _statusEffects.TryRemoveStatusEffect(thrall, "KnockedDown");
 
             //Remove sleep
             if (HasComp<SleepingComponent>(thrall))
@@ -574,10 +571,7 @@ public sealed class DantalionSystem : EntitySystem
             {
                 stamina.StaminaDamage = 0f;
                 _stamina.ExitStamCrit(thrall, stamina);
-                _stamina.AdjustStatus((thrall, stamina));
                 RemComp<ActiveStaminaComponent>(thrall);
-                _statusEffects.TryRemoveStatusEffect(thrall, SharedStaminaSystem.StaminaLow);
-                _stamina.UpdateStaminaVisuals((thrall, stamina));
                 Dirty(thrall, stamina);
             }
 

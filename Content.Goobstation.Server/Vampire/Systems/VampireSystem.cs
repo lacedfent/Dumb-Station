@@ -17,6 +17,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Maps;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
@@ -135,7 +136,7 @@ public sealed partial class VampireSystem : EntitySystem
         }
 
         if (TryComp<MobStateComponent>(uid, out var mobState) &&
-            mobState.CurrentState == Shared.Mobs.MobState.Dead)
+            mobState.CurrentState == MobState.Dead)
         {
             ResetSpaceExposure(sunlight);
             return;
@@ -579,7 +580,7 @@ public sealed partial class VampireSystem : EntitySystem
         if (holywater <= FixedPoint2.Zero)
             return;
 
-        if (TryComp(uid, out MobStateComponent? mobState) && mobState.CurrentState == Shared.Mobs.MobState.Dead)
+        if (TryComp(uid, out MobStateComponent? mobState) && mobState.CurrentState == MobState.Dead)
             return;
 
         comp.NextHolyWaterTick = _timing.CurTime + comp.HolyTickDelay;
@@ -613,7 +614,7 @@ public sealed partial class VampireSystem : EntitySystem
         if (!IsInHolyPlace(uid, comp))
             return;
 
-        if (TryComp(uid, out MobStateComponent? mobState) && mobState.CurrentState == Shared.Mobs.MobState.Dead)
+        if (TryComp(uid, out MobStateComponent? mobState) && mobState.CurrentState == MobState.Dead)
             return;
 
         comp.NextHolyPlaceTick = _timing.CurTime + comp.HolyTickDelay;

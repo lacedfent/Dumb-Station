@@ -502,7 +502,7 @@ public sealed partial class VampireSystem : EntitySystem
             // If target in front
             if (dot > 0.7f && !knockedDown)
             {
-                _stun.TryAddParalyzeDuration(target, TimeSpan.FromSeconds(2));
+                _stun.TryParalyze(target, TimeSpan.FromSeconds(2), true);
 
                 _stamina.TakeStaminaDamage(target, args.FrontStaminaDamage, stam, source: uid);
 
@@ -523,7 +523,7 @@ public sealed partial class VampireSystem : EntitySystem
                 _stamina.TakeStaminaDamage(target, args.BehindStaminaDamage, stam, source: uid);
             else
             {
-                _stun.TryAddParalyzeDuration(target, TimeSpan.FromSeconds(4));
+                _stun.TryParalyze(target, TimeSpan.FromSeconds(4), true);
 
                 _stamina.TakeStaminaDamage(target, args.SideStaminaDamage, stam, source: uid);
             }
@@ -559,16 +559,12 @@ public sealed partial class VampireSystem : EntitySystem
         {
             stamina.StaminaDamage = 0f;
             _stamina.ExitStamCrit(uid, stamina);
-            _stamina.AdjustStatus((uid, stamina));
             RemComp<ActiveStaminaComponent>(uid);
-            _statusEffects.TryRemoveStatusEffect(uid, SharedStaminaSystem.StaminaLow);
-            _stamina.UpdateStaminaVisuals((uid, stamina));
             Dirty(uid, stamina);
         }
 
-        _statusEffects.TryRemoveStatusEffect(uid, SharedStunSystem.StunId);
-        _stun.TryUnstun(uid);
-        RemComp<KnockedDownComponent>(uid);
+        _statusEffects.TryRemoveStatusEffect(uid, "Stun");
+        _statusEffects.TryRemoveStatusEffect(uid, "KnockedDown");
 
         args.Handled = true;
     }
@@ -584,16 +580,12 @@ public sealed partial class VampireSystem : EntitySystem
         {
             stamina.StaminaDamage = 0f;
             _stamina.ExitStamCrit(uid, stamina);
-            _stamina.AdjustStatus((uid, stamina));
             RemComp<ActiveStaminaComponent>(uid);
-            _statusEffects.TryRemoveStatusEffect(uid, SharedStaminaSystem.StaminaLow);
-            _stamina.UpdateStaminaVisuals((uid, stamina));
             Dirty(uid, stamina);
         }
 
-        _statusEffects.TryRemoveStatusEffect(uid, SharedStunSystem.StunId);
-        _stun.TryUnstun(uid);
-        RemComp<KnockedDownComponent>(uid);
+        _statusEffects.TryRemoveStatusEffect(uid, "Stun");
+        _statusEffects.TryRemoveStatusEffect(uid, "KnockedDown");
 
         // Purge 10u of harmful reagents
         FixedPoint2 MaxRemove = FixedPoint2.New(10);

@@ -1,9 +1,11 @@
 using System.Numerics;
 using Content.Server.Actions;
 using Content.Shared.Bible.Components;
+using Content.Goobstation.Common.Religion;
 using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Temperature.Systems;
+using Content.Server.Temperature.Components;
 using Content.Goobstation.Shared.Vampire;
 using Content.Goobstation.Shared.Vampire.Components;
 using Content.Goobstation.Shared.Vampire.Components.Classes;
@@ -17,6 +19,7 @@ using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Light.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
@@ -329,7 +332,7 @@ public sealed class UmbraeSystem : EntitySystem
 
     private bool ValidateEternalDarknessConditions(EntityUid uid, VampireComponent comp, UmbraeComponent umbrae)
     {
-        if (TryComp<MobStateComponent>(uid, out var mob) && mob.CurrentState == Shared.Mobs.MobState.Dead)
+        if (TryComp<MobStateComponent>(uid, out var mob) && mob.CurrentState == MobState.Dead)
         {
             DeactivateEternalDarkness(uid, comp, umbrae);
             return false;
@@ -652,7 +655,7 @@ public sealed class UmbraeSystem : EntitySystem
                 return;
             }
 
-            if (TryComp<MobStateComponent>(tgt.Value, out var mob) && mob.CurrentState == Shared.Mobs.MobState.Dead)
+            if (TryComp<MobStateComponent>(tgt.Value, out var mob) && mob.CurrentState == MobState.Dead)
             {
                 Timer.Spawn(arguments.Interval, TickLoop);
                 return;
