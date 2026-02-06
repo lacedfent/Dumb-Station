@@ -182,7 +182,7 @@
 
 - type: entity
   parent: BaseVampireObjective
-  id: VampireDrainObjective
+  id: VampireDrainBloodObjective
   components:
   - type: Objective
     icon:

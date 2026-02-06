@@ -8,8 +8,12 @@ alerts-vampire-fed-desc = Your current blood fullness. Drink blood to stay fed.
 
 roles-antag-vamire-name = Vampire
 roles-antag-vampire-description = Feed on the crew. Extend your fangs and drink their blood.
+roles-antag-vampire-thrall-name = Vampire Thrall
+roles-antag-vampire-thrall-description = You are enthralled to a vampire. Obey your master's commands.
 
 vampire-roundend-name = vampire
+vampire-title = Vampire
+vampire-description = Vampires have infiltrated the station! Feed on the crew to gain power.
 
 vampire-drink-start = You sink your fangs into {CAPITALIZE(THE($target))}.
 

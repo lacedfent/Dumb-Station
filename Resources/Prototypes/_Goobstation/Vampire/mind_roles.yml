@@ -1,0 +1,19 @@
+# Vampire Mind Roles
+
+- type: entity
+  parent: BaseMindRole
+  id: MindRoleVampire
+  name: Vampire Role
+  components:
+  - type: MindRole
+    antagPrototype: Vampire
+    exclusiveAntag: true
+
+- type: entity
+  parent: BaseMindRole
+  id: MindRoleVampireThrall
+  name: Vampire Thrall Role
+  components:
+  - type: MindRole
+    antagPrototype: VampireThrall
+    exclusiveAntag: false

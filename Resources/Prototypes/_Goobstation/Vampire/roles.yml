@@ -8,3 +8,10 @@
   - !type:OverallPlaytimeRequirement
     time: 3h
   playTimeTracker: AntagVampire
+
+- type: antag
+  id: VampireThrall
+  name: roles-antag-vampire-thrall-name
+  antagonist: false
+  setPreference: false
+  objective: roles-antag-vampire-thrall-description

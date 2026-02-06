@@ -1,0 +1,87 @@
+# Vampire Game Rules
+
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BaseVampireRule
+  components:
+  - type: GameRule
+    minPlayers: 25
+    chaosScore: 800
+  - type: AntagObjectives
+    objectives:
+    - VampireDrainBloodObjective
+  - type: AntagSelection
+    useCharacterNames: true
+    selectionTime: PrePlayerSpawn
+    agentName: vampire-roundend-name
+    definitions:
+    - prefRoles: [ Vampire ]
+      playerRatio: 25
+      min: 1
+      max: 2
+      mindRoles:
+      - MindRoleVampire
+      components:
+      - type: Vampire
+      - type: VampireSunlight
+      - type: NpcFactionMember
+        factions:
+        - Vampire
+  - type: Tag
+    tags:
+      - RoundstartAntag
+
+- type: entity
+  parent: BaseVampireRule
+  id: Vampire
+
+- type: entity
+  parent: BaseVampireRule
+  id: VampireMidround
+  components:
+  - type: StationEvent
+    earliestStart: 30
+    weight: 5.0
+    minimumPlayers: 20
+    duration: 1
+    chaos:
+      Hostile: 150
+      Friend: 30
+      Medical: 150
+      Death: 150
+  - type: AntagSelection
+    useCharacterNames: true
+    selectionTime: PostPlayerSpawn
+    definitions:
+    - prefRoles: [ Vampire ]
+      playerRatio: 25
+      min: 1
+      max: 1
+      pickPlayer: false
+      mindRoles:
+      - MindRoleVampire
+      components:
+      - type: Vampire
+      - type: VampireSunlight
+      - type: NpcFactionMember
+        factions:
+        - Vampire
+  - type: Tag
+    tags:
+      - MidroundAntag
+
+- type: gamePreset
+  id: Vampire
+  alias:
+    - vamp
+    - bloodsucker
+  name: vampire-title
+  description: vampire-description
+  showInVote: true
+  rules:
+    - Vampire
+    - BasicStationEventScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation
+    - SubGamemodesRule

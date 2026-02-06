@@ -1,0 +1,14 @@
+# Vampire AI Faction
+
+- type: npcFaction
+  id: Vampire
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Zombie
+  - Revolutionary
+  - Heretic
+  - Wizard
+  - Changeling
+  - Blob
+  - Wraith

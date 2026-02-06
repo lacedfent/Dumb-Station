@@ -14,7 +14,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
-using Content.Shared.FixedPoint;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
