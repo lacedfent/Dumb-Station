@@ -5,8 +5,9 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Serialization;
-using Content.Shared.FixedPoint;
+using Robust.Shared.GameObjects;
 
 namespace Content.Goobstation.Shared.Vampire;
 

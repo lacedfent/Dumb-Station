@@ -1,4 +1,4 @@
-using Content.Shared.FixedPoint;
+using Robust.Shared.GameObjects;
 
 namespace Content.Goobstation.Shared.Vampire.Components;
 
