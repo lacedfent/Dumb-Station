@@ -322,6 +322,44 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+- type: listing
+  id: UplinkVirusTelecomms
+  name: uplink-virus-telecomms-name
+  description: uplink-virus-telecomms-desc
+  icon: { sprite: Objects/Devices/pda.rsi, state: pda-syndie }
+  productEvent: !type:PurchaseTelecommsVirusEvent
+  raiseProductEventOnUser: false
+  cost:
+    Telecrystal: 45
+  categories:
+    - UplinkDisruption
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - ContractorUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: UplinkVirusBlackout
+  name: uplink-virus-blackout-name
+  description: uplink-virus-blackout-desc
+  icon: { sprite: Objects/Devices/pda.rsi, state: pda-syndie }
+  productEvent: !type:PurchaseBlackoutVirusEvent
+  raiseProductEventOnUser: false
+  cost:
+    Telecrystal: 55
+  categories:
+    - UplinkDisruption
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - ContractorUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
 # Weaponry
 
 # - type: listing
