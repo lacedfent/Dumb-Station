@@ -500,6 +500,33 @@
   - VehicleClowncarAntag
   - BikeHornImplanter
 
+- type: selectableSet
+  id: SyndicateCultistSet
+  name: selectable-set-syndicate-cultist-name
+  description: selectable-set-syndicate-cultist-description
+  sprite:
+    sprite: Objects/Weapons/Melee/cult_dagger.rsi
+    state: icon
+  content:
+  - EncryptionKeySyndie
+  - ClothingOuterRobesCult
+  - ClothingShoesCult
+  - RitualDagger
+  - RitualDagger
+  - BedsheetCult
+  - ClothingMaskGasMime
+  - Handcuffs
+  - Handcuffs
+  - Handcuffs
+  - Handcuffs
+  - ChemistryBottleNocturine
+  - ChemistryBottleNocturine
+  - HypopenBox
+  - Candle
+  - Candle
+  - Candle
+  - Candle
+
 # Blueshield officer
 
 - type: selectableSet

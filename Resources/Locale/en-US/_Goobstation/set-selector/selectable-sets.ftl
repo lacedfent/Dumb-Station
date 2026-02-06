@@ -165,6 +165,12 @@ selectable-set-syndicate-clownops-description =
     Contains: Regenerating pie cannon, clown mask, bling clown shoes, omega soap, bike horn, 3 lube grenades,
     cluster banana peel, 2 explosive banana peels, clown car, bike horn implanter, and a syndicate encryption key.
 
+selectable-set-syndicate-cultist-name = Cultist Bundle
+selectable-set-syndicate-cultist-description =
+    The dark rituals require proper preparation. Convert the non-believers.
+    Contains: Cult robes, cult shoes, 2 ritual daggers, cult bedsheet, mime gas mask, 4 handcuffs,
+    2 nocturine bottles, hypopen box, 4 candles, and a syndicate encryption key.
+
 # Blueshield
 
 selectable-set-blueshield-shield-name = blueshield set
