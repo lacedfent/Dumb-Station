@@ -67,7 +67,7 @@ public sealed class VampireClassBui : BoundUserInterface
         {
             buttons.Add(new RadialMenuActionOption<string>(HandleClassChoice, proto.ID)
             {
-                IconSpecifier = RadialMenuIconSpecifier.With(proto.Icon),
+                Sprite = proto.Icon,
                 ToolTip = Loc.GetString(proto.Tooltip)
             });
         }

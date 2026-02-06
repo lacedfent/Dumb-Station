@@ -1,4 +1,5 @@
-using Content.Server.Bible.Components;
+using Content.Shared.Bible.Components;
+using Content.Goobstation.Common.Religion;
 using Content.Goobstation.Shared.Vampire;
 using Content.Goobstation.Shared.Vampire.Components;
 using Content.Goobstation.Shared.Vampire.Components.Classes;
@@ -244,7 +245,7 @@ public sealed partial class VampireSystem : EntitySystem
                 return true;
 
             // Check for door components that typically block movement
-            if (HasComp<Shared.Doors.Components.DoorComponent>(ent))
+            if (HasComp<Content.Shared.Doors.Components.DoorComponent>(ent))
                 return true;
 
             // Check entity prototype names for common wall/structure types
@@ -292,7 +293,7 @@ public sealed partial class VampireSystem : EntitySystem
 
         if (IsProtectedByFaith(target) && comp.FullPower != true)
         {
-            _popup.PopupEntity(Loc.GetString("vampire-target-protected-by-faith"), uid, uid, Shared.Popups.PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("vampire-target-protected-by-faith"), uid, uid, Content.Shared.Popups.PopupType.MediumCaution);
             return;
         }
 
@@ -320,7 +321,7 @@ public sealed partial class VampireSystem : EntitySystem
 
         if (IsProtectedByFaith(target) && comp.FullPower != true)
         {
-            _popup.PopupEntity(Loc.GetString("vampire-target-protected-by-faith"), uid, uid, Shared.Popups.PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("vampire-target-protected-by-faith"), uid, uid, Content.Shared.Popups.PopupType.MediumCaution);
             return;
         }
 
@@ -363,7 +364,7 @@ public sealed partial class VampireSystem : EntitySystem
 
         if (drunkFromTarget >= comp.MaxBloodPerTarget)
         {
-            _popup.PopupEntity(Loc.GetString("vampire-drink-target-maxed", ("amount", comp.MaxBloodPerTarget)), uid, uid, Shared.Popups.PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("vampire-drink-target-maxed", ("amount", comp.MaxBloodPerTarget)), uid, uid, Content.Shared.Popups.PopupType.MediumCaution);
             comp.IsDrinking = false;
             return;
         }

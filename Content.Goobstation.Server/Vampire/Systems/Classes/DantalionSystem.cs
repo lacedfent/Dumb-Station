@@ -1,16 +1,17 @@
 using System.Linq;
 using Content.Goobstation.Server.Vampire.Components;
-using Content.Server.Bible.Components;
+using Content.Shared.Bible.Components;
 using Content.Goobstation.Shared.Vampire;
 using Content.Goobstation.Shared.Vampire.Components;
 using Content.Goobstation.Shared.Vampire.Components.Classes;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
-using Content.Shared.CollectiveMind;
+using Content.Shared._Starlight.CollectiveMind;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Flash;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Humanoid;
@@ -20,6 +21,7 @@ using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Stealth;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Stealth.Components;
@@ -46,19 +48,18 @@ public sealed class DantalionSystem : EntitySystem
 
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedCollectiveMindSystem _collectiveMind = default!;
+    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly Content.Shared.Mind.SharedMindSystem _mind = default!;
     [Dependency] private readonly TargetObjectiveSystem _targetObjectives = default!;
     [Dependency] private readonly VampireSystem _vampire = default!;
     [Dependency] private readonly Content.Server.Actions.ActionsSystem _actions = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly Shared.Examine.ExamineSystemShared _examine = default!;
-    [Dependency] private readonly Shared.Stealth.SharedStealthSystem _stealth = default!;
+    [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly SharedStealthSystem _stealth = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly SharedFlashSystem _flash = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -445,7 +446,8 @@ public sealed class DantalionSystem : EntitySystem
         if (slowDuration > TimeSpan.Zero)
         {
             var multiplier = Math.Clamp(args.SlowMultiplier, 0.05f, 1f);
-            _movementMod.TryAddMovementSpeedModDuration(target, MovementModStatusSystem.FlashSlowdown, slowDuration, multiplier);
+            // TODO: MovementModStatusSystem doesn't exist in Goobstation - need alternative for temporary speed debuff
+            // _movementMod.TryAddMovementSpeedModDuration(target, MovementModStatusSystem.FlashSlowdown, slowDuration, multiplier);
         }
 
         ApplyHysteriaVision(target, uid, args.HysteriaDuration);

@@ -3,6 +3,7 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
 using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
+using Content.Goobstation.Server.Vampire.Components;
 using Content.Goobstation.Shared.Vampire;
 using Content.Goobstation.Shared.Vampire.Components;
 using Content.Goobstation.Shared.Vampire.Components.Classes;

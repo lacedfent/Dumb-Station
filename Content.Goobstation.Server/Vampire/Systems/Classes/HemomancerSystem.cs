@@ -26,7 +26,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Physics;
 using Content.Shared.Polymorph;
-using Content.Shared.Warps;
+using Content.Server.Warps;
 using Content.Shared.Wieldable;
 using Content.Shared.Wieldable.Components;
 using Content.Shared.Whitelist;
@@ -74,7 +74,6 @@ public sealed class HemomancerSystem : EntitySystem
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
@@ -236,7 +235,8 @@ public sealed class HemomancerSystem : EntitySystem
 
                     var poisonSpec = new DamageSpecifier(_proto.Index<DamageTypePrototype>(_poisonTypeId), toxinDamage);
                     _damageableSystem.TryChangeDamage(ent, poisonSpec, true, origin: performerUid);
-                    _movementMod.TryAddMovementSpeedModDuration(ent, MovementModStatusSystem.FlashSlowdown, slowDuration, slowMultiplier);
+                    // TODO: MovementModStatusSystem doesn't exist in Goobstation - need alternative for temporary speed debuff
+                    // _movementMod.TryAddMovementSpeedModDuration(ent, MovementModStatusSystem.FlashSlowdown, slowDuration, slowMultiplier);
                     hitEnemies.Add(ent);
                 }
             }

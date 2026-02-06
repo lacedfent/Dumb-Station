@@ -1,4 +1,5 @@
 using Content.Goobstation.Server.Vampire.Components;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Flash;
 using Robust.Shared.Audio;

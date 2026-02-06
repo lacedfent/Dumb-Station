@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Server.Actions;
-using Content.Server.Bible.Components;
+using Content.Shared.Bible.Components;
+using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Temperature.Systems;
 using Content.Goobstation.Shared.Vampire;
